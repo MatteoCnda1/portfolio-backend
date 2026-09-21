@@ -1,0 +1,12 @@
+services:
+  portfolio-backend:
+    build: .
+    restart: unless-stopped
+    environment:
+      RESEND_API_KEY: ${RESEND_API_KEY}
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
