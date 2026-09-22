@@ -73,6 +73,7 @@ def contact(payload: ContactIn, request: Request):
         timeout=10,
     )
     if not resp.ok:
+        print(f"Resend error ({resp.status_code}): {resp.text}", flush=True)
         raise HTTPException(status_code=502, detail="Échec de l'envoi")
 
     _recent_submissions.setdefault(ip, []).append(time.time())
