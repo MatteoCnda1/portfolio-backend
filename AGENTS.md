@@ -12,6 +12,11 @@ de session — à chaque conversation. Il est importé ici :
 
 @.ai/STATE.md
 
+Les skills à utiliser selon la tâche (dont `grill-me`) sont listées dans
+[`.ai/SKILLS.md`](.ai/SKILLS.md), importé ci-dessous :
+
+@.ai/SKILLS.md
+
 Convention complète dans [`.ai/README.md`](.ai/README.md). En fin de session, rafraîchir
 l'état : `bash .ai/ctx.sh` (ou la commande `/handoff` sous Claude Code).
 
