@@ -9,6 +9,9 @@ garde que l'**état dynamique**, sous une forme compacte et auto-chargée.
   Auto-chargé en début de session via un import dans `AGENTS.md` (`@.ai/STATE.md`).
   - Partie **haute** : maintenue à la main (ou via la commande `/handoff` sous Claude).
   - Partie **basse** (entre les marqueurs `CTX:AUTO`) : régénérée par `ctx.sh`, à ne pas éditer.
+- **`SKILLS.md`** — quelles skills utiliser selon la tâche (communes + spécifiques au projet).
+  Auto-chargé via `@.ai/SKILLS.md` dans `AGENTS.md`. Les skills embarquées vivent dans
+  `.claude/skills/<nom>/` (ex. `grill-me`).
 - **`ctx.sh`** — régénère le bloc dynamique (branche, 5 derniers commits, issues `gh` ouvertes,
   nb de fichiers modifiés). Déterministe, aucun appel LLM.
 
@@ -29,6 +32,7 @@ contre une exploration complète du repo à chaque fois.
 ## Portage vers un autre repo
 ```bash
 cp -r .ai/ /chemin/autre-repo/
-# puis ajouter en tête de son AGENTS.md (ou CLAUDE.md) : @.ai/STATE.md
-# et adapter la partie haute de .ai/STATE.md au projet.
+mkdir -p /chemin/autre-repo/.claude/skills && cp -r .claude/skills/grill-me /chemin/autre-repo/.claude/skills/
+# puis ajouter en tête de son AGENTS.md (ou CLAUDE.md) : @.ai/STATE.md et @.ai/SKILLS.md
+# et adapter la partie haute de .ai/STATE.md + la section « Spécifiques » de .ai/SKILLS.md.
 ```
